@@ -19,7 +19,7 @@ def save(album):
 
 def select(id):
     album = None
-    sql = "SELECT * FROM album WHERE id = %s"
+    sql = "SELECT * FROM albums WHERE id = %s"
     values = [id]
     result = run_sql(sql, values)[0]
 
@@ -36,7 +36,7 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
-        artist = artist_repository.select(row["user_id"])
+        artist = artist_repository.select(row["artist_id"])
         album = Album(row["name"], row["genre"], artist, row['id'])
         albums.append(album)
     return albums
